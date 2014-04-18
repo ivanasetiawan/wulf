@@ -1,0 +1,120 @@
+@import "compass/utilities";
+@import "compass/css3";
+
+@import "variables";
+@import "core/keyframes";
+@import "core/iconfont";
+@import "core/normalize";
+@import "core/utilities";
+@import "core/grid";
+// @import "components/easter-egg";
+
+html {
+	font-size: 16px;
+	line-height: 1.5;
+	// @media (min-width: $screen-tablet) { font-size: 16px; }
+	@media (min-width: $screen-desktop) { font-size: 18px; }
+	@media (min-width: $screen-lg-desktop) { font-size: 20px; }
+}
+
+body, html {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	font-family: $font-family-sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+	color: $color-black;
+	font-weight: 700;
+	margin: 20px;
+	@each $theme in $themes {
+		.bg--#{nth($theme,1)} & {
+			color: nth($theme, 4);
+		}
+	}
+}
+
+h1, .h1 {
+	font-size: 4rem;
+}
+
+h2, .h2 {
+	font-size: 3.5rem;
+}
+
+h3, .h3 {
+	font-size: 3rem;
+}
+
+h4, .h4 {
+	font-size: 2.5rem;
+}
+
+h5, .h5 {
+	font-size: 2rem;
+}
+
+h6, .h6 {
+	font-size: 1.5rem;
+}
+
+h7, .h7 {
+	font-size: 1.15rem;
+}
+
+h8, .h8 {
+	font-size: 0.8rem;
+}
+
+a {
+	color: $color-green;
+	text-decoration: none;
+	.bg--green & { color: $color-green--dark; }
+	&:hover { text-decoration: underline; }
+}
+
+.row {
+	clear: both;
+	padding: 60px 0;
+	> .row-header:first-child {
+		margin-left: 1rem;
+		margin-right: 1rem;
+	}
+}
+
+.btn {
+	@include border-radius(4px);
+	display: inline-block;
+	padding: 5px 10px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 700;
+	&:hover { text-decoration: none; }
+}
+
+.btn--light {
+	@extend .btn;
+	background: $color-blue;
+	color: $color-white;
+	&:hover {background: $color-black; }
+}
+
+.shadow--bottom {
+  @include box-shadow(rgba(0, 0, 0, 0.15) 0 0 4px 1px);
+}
+
+.autoheight {
+	height: auto;
+	min-height: 100%;
+	max-height: none;
+}
+
+@import "components/header";
+@import "components/intro";
+@import "components/team";
+@import "components/clients";
+@import "components/vision";
+
+

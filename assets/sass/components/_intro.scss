@@ -1,0 +1,53 @@
+// Introduction on top of the proposal
+// -------------------------
+
+.intro {
+  padding-top: 125px;
+  span {
+    display: block;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+    line-height: 1.8;
+  }
+}
+
+.fadein {
+  opacity: 0;
+  animation: fadeIn .4s .3s 1 forwards ease-in;
+  -moz-animation: fadeIn .4s .3s 1 forwards ease-in;
+  -webkit-animation: fadeIn .4s .3s 1 forwards ease-in;
+}
+
+.wulf {
+  width: 300px;
+  height: 344px;
+  background: url(/images/wulf.png);
+  margin: 0 auto;
+  text-indent: -9999px;
+}
+
+.wulf-text {
+  width: 300px;
+  height: 75px;
+  background: url(/images/wulf-text.png);
+  margin: 0 auto;
+}
+
+.icon-arrow-down3 {
+  -webkit-animation: bounce 2000ms ease-out;
+  -moz-animation: bounce 2000ms ease-out;
+  animation: bounce 2000ms ease-out;
+  margin: 0 auto;
+  text-decoration: none;
+  &:before {
+    font-size: 40px;
+    color: $color-blue--dark;
+    opacity: 0.7;
+  }
+  &:hover:before { opacity: 1; }
+}
+
+.no-js .row--intro .inner { min-height: 300px; }
+

@@ -1,0 +1,32 @@
+// Team
+// -------------------------
+.list-members {
+  @extend %list-unstyled;
+  @include clearfix();
+  text-align: center;
+  margin-bottom: -2rem;
+  > li {
+    float: none;
+    margin: 0 20px 20px;
+    display: inline-block;
+    vertical-align: top;
+  }
+  hgroup { margin-bottom: 1rem; }
+  .js_image {
+    .js & {
+      width: 200px;
+      height: 200px;
+    }
+  }
+  p { font-size: 0.8rem;}
+}
+.list-members__title,
+.list-members__subtitle {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.list-members__subtitle {
+  font-weight: 400;
+  font-style: italic;
+  font-size: .9rem;
+}

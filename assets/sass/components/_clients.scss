@@ -1,0 +1,37 @@
+// Clients
+// -------------------------
+
+.list-clients {
+  @extend %list-unstyled;
+  @include clearfix();
+  @extend %margin-bottom-negative;
+  > li { @extend %margin-bottom;
+    > a {
+      margin: 0 20px;
+      text-decoration: none;
+      opacity: 0.6;
+      &:hover { opacity: 1; }
+    }
+  }
+  h3 { margin: 0; }
+  .js_image {
+    .js & {
+      width: 319px;
+      height: 173px;
+    }
+  }
+}
+
+.list-clients__link {
+  display: block;
+  @include transition(all .3s  ease);
+  @extend %margin-bottom;
+  img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 0;
+  }
+  &:hover {
+    border-color: $color-green;
+  }
+}

@@ -1,0 +1,84 @@
+// Fonts
+
+$font-family-sans-serif: 	"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-serif: 			"Merriweather", Georgia, "Times New Roman", Times, serif;
+
+
+// Colors
+
+$color-blue: 					#4db8cb;
+$color-blue--dark: 		#0099b5;
+$color-black:  				#2e2e2a;
+$color-grey:  				#6c6c69;
+$color-green: 				#9bb47d;
+$color-green--dark: 	#698157;
+$color-white: 				#fff;
+
+
+// Themes:
+// 1. Theme name
+// 2. Corresponding color
+// 3. Default text color
+// 4. Heading color
+// 5. Has background texture
+
+$themes: (
+	(
+		'blue',
+		$color-blue--dark,
+		$color-white,
+		$color-white,
+		false
+	),
+	(
+		'white',
+		$color-white,
+		$color-black,
+		$color-black,
+		false
+	),
+	(
+		'visual',
+		$color-black,
+		#fefdeb,
+		$color-white,
+		false
+	)
+);
+
+// Grid
+
+// Extra small screen / phone
+$screen-xs: 					480px !default;
+$screen-phone: 				$screen-xs !default;
+$container-xs: 				280px;
+
+// Small screen / tablet
+$screen-sm: 					768px !default;
+$screen-tablet: 			$screen-sm !default;
+$container-sm: 				600px;
+
+// Medium screen / desktop
+$screen-md:						992px !default;
+$screen-desktop: 			$screen-md !default;
+$container-md: 				800px;
+
+// Large screen / wide desktop
+$screen-lg: 					1200px !default;
+$screen-lg-desktop: 	$screen-lg !default;
+$container-lg: 				1170px;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max: 			($screen-sm - 1) !default;
+$screen-sm-max: 			($screen-md - 1) !default;
+$screen-md-max: 			($screen-lg - 1) !default;
+
+$grid-columns: 				12 !default;
+
+
+$breakpoints: (
+	('xs', $screen-phone, $container-xs, 20px),
+	('sm', $screen-tablet, $container-sm, 20px),
+	('md', $screen-desktop, $container-md, 30px),
+	('lg', $screen-lg-desktop, $container-lg, 40px)
+);
