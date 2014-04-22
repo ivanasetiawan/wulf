@@ -22,17 +22,11 @@
 
 .wulf {
   width: 300px;
-  height: 344px;
-  background: url(/images/wulf.png);
+  height: 430px;
+  background-image: url(../assets/images/team_wulf_logo.png);
+  background-size: cover;
   margin: 0 auto;
   text-indent: -9999px;
-}
-
-.wulf-text {
-  width: 300px;
-  height: 75px;
-  background: url(/images/wulf-text.png);
-  margin: 0 auto;
 }
 
 .icon-arrow-down3 {
@@ -49,5 +43,4 @@
   &:hover:before { opacity: 1; }
 }
 
-.no-js .row--intro .inner { min-height: 300px; }
 

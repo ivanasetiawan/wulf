@@ -1,6 +1,59 @@
 // Team
 // -------------------------
 .list-members {
+	@extend %list-unstyled;
+	@include clearfix();
+	margin: 0 auto;
+	text-align: center;
+	> li {
+		float: none;
+		margin: 0 0 20px;
+		vertical-align: top;
+	}
+	hgroup { margin-bottom: 1rem; }
+	.js_image {
+		.js & {
+			width: 200px;
+			height: 200px;
+		}
+	}
+	p { font-size: 0.8rem;}
+	@media (min-width: $screen-desktop) {
+		max-width: $screen-sm;
+		> li {
+			min-height: 205px;
+			text-align: left;
+			padding-left: 230px;
+			position: relative;
+			&:nth-child(2n+1) {
+				padding: 0 230px 0 0;
+				text-align: right;
+				.image-wrapper {
+					left: auto;
+					right: 0;
+				}
+			}
+		}
+		.image-wrapper {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+}
+.list-members__title,
+.list-members__subtitle {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.list-members__subtitle {
+	font-weight: 400;
+	font-style: italic;
+	font-size: .9rem;
+}
+
+
+.columns-lists {
   @extend %list-unstyled;
   @include clearfix();
   text-align: center;

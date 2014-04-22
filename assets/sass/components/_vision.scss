@@ -26,3 +26,47 @@
     h4, h5, p { margin: 0; text-align: left;}
   }
 }
+
+// Chapter 2
+#pin {
+  width: 100%;
+  overflow: hidden;
+
+  h3 {
+    font-size: 80px;
+    text-align: center;
+    margin: -40px 0 0 0;
+    position: relative;
+    top: 50%;
+    line-height: 80px;
+
+    &#unpin {
+      margin-top: 10px;
+      position: absolute;
+      width: 100%
+    }
+  }
+
+  #wipe {
+    height: 100%;
+    width: 0%;
+    top: 0;
+    position: absolute;
+    background-color: #2e639e;
+    overflow: hidden;
+  }
+
+  #slide {
+    height: 100%;
+    width: 100%;
+    top: -100%;
+    position: absolute;
+    
+    h3 {
+      position: absolute;
+      width: 100%; 
+    }
+  }
+
+}
+

@@ -15,95 +15,534 @@
 	<meta property="og:description"	content="Team Wulf is super duper awesome!" />
 
 	<title>Wulf</title>
-  <link href="//fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic" rel="stylesheet">
-  <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic" rel="stylesheet">
 
-<!-- 	<link rel="stylesheet" href="css/normalize.css" type="text/css"> -->
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<link rel="stylesheet" href="css/demo.css" type="text/css">
 
-  <!-- Wulf CSS -->
-  <link rel="stylesheet" href="css/default.css" type="text/css">
+	<!-- Wulf CSS -->
+	<link rel="stylesheet" href="css/default.css" type="text/css">
 
 	<script type="text/javascript" src="assets/js/_dependent/greensock/TweenMax.min.js"></script>
 	<script type="text/javascript" src="assets/js/_dependent/greensock/plugins/ScrollToPlugin.min.js"></script>
 	<script type="text/javascript" src="assets/js/_dependent/jquery-1.11.0.min.js"></script>
-  	<script type="text/javascript" src="assets/js/_examples/modernizr.custom.min.js"></script>
-  	<script type="text/javascript" src="assets/js/_mobile/iscroll.js"></script>
-  	<script type="text/javascript" src="assets/js/jquery.scrollmagic.min.js"></script>
-  	<script type="text/javascript" src="assets/js/_examples/demo.js"></script>
+	<script type="text/javascript" src="assets/js/_examples/modernizr.custom.min.js"></script>
+	<script type="text/javascript" src="assets/js/_mobile/iscroll.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.scrollmagic.min.js"></script>
+	<script type="text/javascript" src="assets/js/_examples/demo.js"></script>
 </head>
 <body>
 
+	<header class="sticky sticky--header shadow--bottom">
+		<div class="inner">
+			<h1><a href="#" class="logo-mangrove">Mangrove</a></h1>
+		</div>			
+	</header>
 
+	<section class="intro row row--background-image bg-header">
+		<hgroup class="row-header">
+			<h1 class="wulf fadein">team Wulf</h1>
+			<h2 class="serif font-italic">
+				We're here to help you be AWESOME!<br>scroll down to get to know us!
+			</h2>
+		</hgroup>
 
+<!--     <audio autoplay="autoplay">
+			<source src="wolfcry.mp3" type="audio/mpeg">
+			Your browser does not support the audio tag.
+		</audio> -->
 
-
-
-
-
-
+		<div class="center fadeinbounce">
+			<a class="icon icon-arrow-down3 js_scrollto" href="#chapter1"></a>
+		</div>
+	</section>
 
 	<div id="content-wrapper">
-	  	<script type="text/javascript">
-	  		var controller;
-	  		if (Modernizr.touch) {
-	  			var myScroll;
-	  			$(document).ready(function () {
-	  				// wrap for iscroll
-		  			$("#content-wrapper")
-		  				.addClass("scrollContainer")
-		  				.wrapInner('<div class="scrollContent"></div>');
+		<script type="text/javascript">
+			var controller;
+			if (Modernizr.touch) {
+				var myScroll;
+				$(document).ready(function () {
+					// wrap for iscroll
+					$("#content-wrapper")
+						.addClass("scrollContainer")
+						.wrapInner('<div class="scrollContent"></div>');
 
-		  			// add iScroll
-	  				myScroll = new IScroll('#content-wrapper', {scrollX: false, scrollY: true, scrollbars: true, useTransform: false, useTransition: false, probeType: 3});
+					// add iScroll
+					myScroll = new IScroll('#content-wrapper', {scrollX: false, scrollY: true, scrollbars: true, useTransform: false, useTransition: false, probeType: 3});
 
-	  				// update container on scroll
-					myScroll.on("scroll", function () {
-						controller.update();
+					// update container on scroll
+				myScroll.on("scroll", function () {
+					controller.update();
+				});
+
+				// overwrite scroll position calculation to use child's offset instead of parents scrollTop();
+				controller.scrollPos(function () {
+					return -myScroll.y;
+				});
+
+				// refresh height, so all is included.
+				setTimeout(function () {
+						myScroll.refresh();
+				}, 0);
+
+					$("#content-wrapper").on("touchend", "a", function (e) {
+						// a bit dirty workaround for links not working in iscroll for some reason...
+						e.preventDefault();
+						window.location.href = $(this).attr("href");
 					});
 
-					// overwrite scroll position calculation to use child's offset instead of parents scrollTop();
-					controller.scrollPos(function () {
-						return -myScroll.y;
+				// manual set hight (so height 100% is available within scroll container)
+					$(document).on("orientationchange", function () {
+						$("section")
+							.css("min-height", $(window).height())
+							.parent(".scrollmagic-pin-spacer").css("min-height", $(window).height());
 					});
+					$(document).trigger("orientationchange"); // trigger to init
+				});
+				// init the controller
+				controller = new ScrollMagic({
+					container: "#content-wrapper",
+					globalSceneOptions: {
+						triggerHook: "onLeave"
+					}
+				});
+			} else {
+				// init the controller
+				controller = new ScrollMagic({
+					globalSceneOptions: {
+						triggerHook: "onLeave"
+					}
+				});
+			}
 
-					// refresh height, so all is included.
-					setTimeout(function () {
-					    myScroll.refresh();
-					}, 0);
+		</script>
+		<section id="chapter1" class="row row--team bg--white autoheight">
+			<div class="row-header">
+				<h2 class="h3 title--team">
+					Meet the team
+				</h2>
+			</div>
+			<div class="inner">
+				<div class="columns">
 
-	  				$("#content-wrapper").on("touchend", "a", function (e) {
-	  					// a bit dirty workaround for links not working in iscroll for some reason...
-	  					e.preventDefault();
-	  					window.location.href = $(this).attr("href");
-	  				});
+					<p class="center col-md-6 col-md-push-3 serif font-italic margin-bottom-40">We believe in team work.<br> With over 45 professionals we work closely together. With each other and with… our clients! That's why we don't work with freelancers and don't outsource anything.</p>
+					<ul class="list-members clear">
+						<li class="module effect">
+							<div class="image-wrapper">
+								<img src="assets/images/amber.png" alt="Amber Taal">
+							</div>
+							<hgroup>
+								<h3 class="h7 serif list-members__title margin-top-10">Amber Taal</h3>
+								<h4 class="list-members__subtitle color--black">Online Marketeer</h4>
+							</hgroup>
+							<p class="padding-bottom-10">Black Belt online marketing Spammer. I go from zero to Asian-Level in six seconds! Offline I go by the name Amber, online by Spambert!</p>
+						</li>
+						<li class="module effect">
+							<div class="image-wrapper">
+								<img src="assets/images/arno.png" alt="Arno Hoogenhuizen">
+							</div>
+							<hgroup>
+								<h3 class="h7 serif list-members__title margin-top-10">Arno Hoogenhuizen</h3>
+								<h4 class="list-members__subtitle color--black">Product Owner</h4>
+							</hgroup>
+							<p class="padding-bottom-10">As a product owner my job is to make sure that the customers’ wishes are clear and prioritized correctly before development kicks off. Together we go for a great result with 100% customer satisfaction.</p>
+						</li>
+						<li class="module effect">
+							<div class="image-wrapper">
+								<img src="assets/images/bram.png" alt="Bram van Rijen">
+							</div>
+							<hgroup>
+								<h3 class="h7 serif list-members__title margin-top-10">Bram van Rijen</h3>
+								<h4 class="list-members__subtitle color--black">Creative Director</h4>
+							</hgroup>
+							<p class="padding-bottom-10">At Mangrove I come up with concepts that work and designs that do the same. I also love doing illustrations and I'm an official member of the Mangrove Pixel Police. Offenders will be prosecuted!</p>
+						</li>
+						<li class="module effect">
+							<div class="image-wrapper">
+								<img src="assets/images/ivana.png" alt="Ivana Setiawan">
+							</div>
+							<hgroup>
+								<h3 class="h7 serif list-members__title margin-top-10">Ivana Setiawan</h3>
+								<h4 class="list-members__subtitle color--black">Developer / UI Designer</h4>
+							</hgroup>
+							<p class="padding-bottom-10">I am a nerd on acid - passionately in love with frontend shizzle, obsessed with figuring out UI &amp; UX of a layout, Designer at heart and Writer during leisure time.</p>
+						</li>
+						<li class="module effect">
+							<div class="image-wrapper">
+								<img src="assets/images/jeroen.png" alt="Jeroen van Eck">
+							</div>
+							<hgroup>
+								<h3 class="h7 serif list-members__title margin-top-10">Jeroen van Eck</h3>
+								<h4 class="list-members__subtitle color--black">Astronout</h4>
+							</hgroup>
+							<p class="padding-bottom-10">Making sure clients get what they need, which is not necessarily what they want. Work with teams and clients to get the best results possible.</p>
+						</li>
+						<li class="module effect">
+							<div class="image-wrapper">
+								<img src="assets/images/jordy.png" alt="Jordy van Gelder">
+							</div>
+							<hgroup>
+								<h3 class="h7 serif list-members__title margin-top-10">Jordy van Gelder</h3>
+								<h4 class="list-members__subtitle color--black">Service/Developer</h4>
+							</hgroup>
+							<p class="padding-bottom-10">As a member of the Product Team, I'm developing internal tools and systems, building the next big thing for the internet. Next to that I'm also a supervisor for interns, guiding them throughout the whole internship and am i the living QA section for Developers.</p>
+						</li>
+						<li class="module effect">
+							<div class="image-wrapper">
+								<img src="assets/images/justin.png" alt="Justin Dijkshoorn">
+							</div>
+							<hgroup>
+								<h3 class="h7 serif list-members__title margin-top-10">Justin Dijkshoorn</h3>
+								<h4 class="list-members__subtitle color--black">Developer</h4>
+							</hgroup>
+							<p class="padding-bottom-10">Justin is our awesome Developer.</p>
+						</li>
+						<li class="module effect">
+							<div class="image-wrapper">
+								<img src="assets/images/michael.png" alt="Michael van Oosten">
+							</div>
+							<hgroup>
+								<h3 class="h7 serif list-members__title margin-top-10">Michael van Oosten</h3>
+								<h4 class="list-members__subtitle color--black">Front-end Developer</h4>
+							</hgroup>
+							<p class="padding-bottom-10">Within the team, I am responsible for the frontend development. Solving the online problems for our clients and building cool stuff at the same time; great!</p>
+						</li>
+						<li class="module effect">
+							<div class="image-wrapper">
+								<img src="assets/images/richard.png" alt="Richard de Vos">
+							</div>
+							<hgroup>
+								<h3 class="h7 serif list-members__title margin-top-10">Richard de Vos</h3>
+								<h4 class="list-members__subtitle color--black">Designer</h4>
+							</hgroup>
+							<p class="padding-bottom-10">As designer at Mangrove, I'm responsible for the concept, user-experience, interaction and visual design of websites, apps and online projects within one of Mangrove's dedicated client teams.</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<script type="text/javascript">
+			var sceneOptions = {duration: 200, offset: 50};
+			var elements = $(".list-members .module");
 
-					// manual set hight (so height 100% is available within scroll container)
-		  			$(document).on("orientationchange", function () {
-			  			$("section")
-			  				.css("min-height", $(window).height())
-			  				.parent(".scrollmagic-pin-spacer").css("min-height", $(window).height());
-		  			});
-		  			$(document).trigger("orientationchange"); // trigger to init
-	  			});
-	  			// init the controller
-	  			controller = new ScrollMagic({
-		  			container: "#content-wrapper",
-		  			globalSceneOptions: {
-		  				triggerHook: "onLeave"
-		  			}
-		  		});
-	  		} else {
-	  			// init the controller
-		  		controller = new ScrollMagic({
-		  			globalSceneOptions: {
-		  				triggerHook: "onLeave"
-		  			}
-		  		});
-	  		}
+			// Amber
+			new ScrollScene(sceneOptions)
+				.addTo(controller)
+				.triggerHook("onEnter")
+				.triggerElement(elements[0])
+				.setTween(TweenMax.from(elements[0], 1, {right: "-50%", marginRight: -200, ease: Back.easeOut}));
 
-	  	</script>
+			// Arno
+			new ScrollScene(sceneOptions)
+				.addTo(controller)
+				.triggerHook("onEnter")
+				.triggerElement(elements[1])
+				.setTween(TweenMax.from(elements[1], 1, {left: "-50%", marginLeft: -200, ease: Back.easeOut}));
+
+			// Bram
+			new ScrollScene(sceneOptions)
+				.addTo(controller)
+				.triggerHook("onEnter")
+				.triggerElement(elements[2])
+				.setTween(TweenMax.from(elements[2], 1, {right: "-50%", marginRight: -200, ease: Back.easeOut}));
+
+			// IS
+			new ScrollScene(sceneOptions)
+				.addTo(controller)
+				.triggerHook("onEnter")
+				.triggerElement(elements[3])
+				.setTween(TweenMax.from(elements[3], 1, {left: "-50%", marginLeft: -200, ease: Back.easeOut}));
+
+			// Jeroen
+			new ScrollScene(sceneOptions)
+				.addTo(controller)
+				.triggerHook("onEnter")
+				.triggerElement(elements[4])
+				.setTween(TweenMax.from(elements[4], 1, {right: "-50%", marginRight: -200, ease: Back.easeOut}));
+
+			// Jordy
+			new ScrollScene(sceneOptions)
+				.addTo(controller)
+				.triggerHook("onEnter")
+				.triggerElement(elements[5])
+				.setTween(TweenMax.from(elements[5], 1, {left: "-50%", marginLeft: -200, ease: Back.easeOut}));
+
+			// Justin
+			new ScrollScene(sceneOptions)
+				.addTo(controller)
+				.triggerHook("onEnter")
+				.triggerElement(elements[6])
+				.setTween(TweenMax.from(elements[6], 1, {right: "-50%", marginRight: -200, ease: Back.easeOut}));
+
+			// Michael
+			new ScrollScene(sceneOptions)
+				.addTo(controller)
+				.triggerHook("onEnter")
+				.triggerElement(elements[7])
+				.setTween(TweenMax.from(elements[7], 1, {left: "-50%", marginLeft: -200, ease: Back.easeOut}));
+
+			// Richard
+			new ScrollScene(sceneOptions)
+				.addTo(controller)
+				.triggerHook("onEnter")
+				.triggerElement(elements[8])
+				.setTween(TweenMax.from(elements[8], 1, {right: "-50%", marginRight: -200, ease: Back.easeOut}));
+		</script>
+
+
+
+		<section id="pin">
+			<div class="">
+				<img src="assets/images/header.jpg" alt="mangrove">
+			</div>
+			
+			<div id="wipe">
+				<h3>wipe</h3>
+			</div>
+			<div id="slide">
+				<h3>slide</h3>
+				<h3>color</h3>
+			</div>
+			<h3 id="unpin">unpin</h3>
+			<script type="text/javascript">
+				// ani
+				var pinani = new TimelineMax()
+					// wipe
+					.add(TweenMax.to("#wipe", 1, {width: "100%"}))
+					// slide
+					.add(TweenMax.to("#slide", 1, {top: "0%", ease: Bounce.easeOut, delay: 0.2}))
+					// color
+					.add([
+						TweenMax.to("#slide h3:first-child", 0.2, {autoAlpha: 0}),
+						TweenMax.from("#slide h3:last-child", 0.2, {autoAlpha: 0})
+					])
+					.add([
+						TweenMax.to("#slide", 0.3, {backgroundColor: "yellow"}),
+						TweenMax.to("#slide h3:last-child", 0.3, {color: "blue"})
+					])
+					.add([
+						TweenMax.to("#slide", 0.3, {backgroundColor: "green"}),
+						TweenMax.to("#slide h3:last-child", 0.3, {color: "red"})
+					])
+					.add([
+						TweenMax.to("#slide", 0.3, {backgroundColor: "red"}),
+						TweenMax.to("#slide h3:last-child", 0.3, {color: "white"})
+					])
+					.add([
+						TweenMax.to("#slide", 0.3, {backgroundColor: "#c7e1ff"}),
+						TweenMax.to("#slide h3:last-child", 0.3, {color: "black"})
+					])
+					// unpin
+					.add(TweenMax.from("#unpin", .5, {top: "100%"}));
+				// pin
+				new ScrollScene({
+						triggerElement: "section#pin",
+						duration: 1100
+					})
+					.on("progress", function () {
+						// keep centered even though width changes
+						$("#wipe h3").width($("#pin>h3").width());
+					})
+					.setTween(pinani)
+					.setPin("section#pin")
+					.addTo(controller);
+			</script>
+		</section>
+
+
+		<section id="chapter2" class="row bg--blue autoheight">
+			<blockquote>
+				<p>I Got 99 Problems But My Pitch Aint One</p>
+				<cite>Jeroen van Eck @Mangrove</cite>
+			</blockquote>
+		</section>
+		<script type="text/javascript">
+			var pinani = new TimelineMax()
+				.add(TweenMax.to("#wipe", 1, {width: "100%"}));
+			// pin
+			new ScrollScene({
+					triggerElement: "section#chapter2",
+					duration: 1100
+				})
+				.setTween(pinani)
+				.setPin("section#chapter2")
+				.addTo(controller);
+		</script>
+
+
+
+
+
+<!-- 		<section id="pin">
+			<h3 id="hlpin">pin</h3>
+			<div id="wipe">
+				<h3>wipe</h3>
+			</div>
+			<div id="slide">
+				<h3>slide</h3>
+				<h3>color</h3>
+			</div>
+			<h3 id="unpin">unpin</h3>
+			<script type="text/javascript">
+				// ani
+				var pinani = new TimelineMax()
+					// pin move down
+					.add(TweenMax.from("#pin>h3:first-child", 0.5, {top: "0%", marginTop: 0}))
+					// wipe
+					.add(TweenMax.to("#wipe", 1, {width: "100%"}))
+					// slide
+					.add(TweenMax.to("#slide", 1, {top: "0%", ease: Bounce.easeOut, delay: 0.2}))
+					// color
+					.add([
+						TweenMax.to("#slide h3:first-child", 0.2, {autoAlpha: 0}),
+						TweenMax.from("#slide h3:last-child", 0.2, {autoAlpha: 0})
+					])
+					.add([
+						TweenMax.to("#slide", 0.3, {backgroundColor: "yellow"}),
+						TweenMax.to("#slide h3:last-child", 0.3, {color: "blue"})
+					])
+					.add([
+						TweenMax.to("#slide", 0.3, {backgroundColor: "green"}),
+						TweenMax.to("#slide h3:last-child", 0.3, {color: "red"})
+					])
+					.add([
+						TweenMax.to("#slide", 0.3, {backgroundColor: "red"}),
+						TweenMax.to("#slide h3:last-child", 0.3, {color: "white"})
+					])
+					.add([
+						TweenMax.to("#slide", 0.3, {backgroundColor: "#c7e1ff"}),
+						TweenMax.to("#slide h3:last-child", 0.3, {color: "black"})
+					])
+					// unpin
+					.add(TweenMax.from("#unpin", .5, {top: "100%"}));
+				// pin
+				new ScrollScene({
+						triggerElement: "section#pin",
+						duration: 1100
+					})
+					.on("progress", function () {
+						// keep centered even though width changes
+						$("#wipe h3").width($("#pin>h3").width());
+					})
+					.setTween(pinani)
+					.setPin("section#pin")
+					.addTo(controller);
+			</script>
+
+ -->
+
+
+
+
+
+		<section id="chapter2" class="row row--team bg--white autoheight">
+			<div class="row-header">
+				<h2 class="h3 title--team">
+					Meet the team
+				</h2>
+			</div>
+			<div class="inner">
+				<div class="columns">
+
+					<p class="center col-md-6 col-md-push-3 serif font-italic margin-bottom-40">We believe in team work.<br> With over 45 professionals we work closely together. With each other and with… our clients! That's why we don't work with freelancers and don't outsource anything.</p>
+					<ul class="columns-lists clear">
+						<li class="col-sm-4 col-lg-3 module effect">
+							<div class="image-wrapper">
+								
+							</div>
+							<hgroup>
+								<h3 class="h7 serif list-members__title margin-top-10">Amber Taal</h3>
+								<h4 class="list-members__subtitle color--black">Online Marketeer</h4>
+							</hgroup>
+							<p class="padding-bottom-10">Amber is our awesome Online Marketeer.</p>
+						</li>
+						<li class="col-sm-4 col-lg-3 module effect">
+							<div class="image-wrapper">
+								
+							</div>
+							<hgroup>
+								<h3 class="h7 serif list-members__title margin-top-10">Arno Hoogenhuizen</h3>
+								<h4 class="list-members__subtitle color--black">Product Owner</h4>
+							</hgroup>
+							<p class="padding-bottom-10">Arno is our awesome Product Owner.</p>
+						</li>
+						<li class="col-sm-4 col-lg-3 module effect">
+							<div class="image-wrapper">
+								
+							</div>
+							<hgroup>
+								<h3 class="h7 serif list-members__title margin-top-10">Bram van Rijen</h3>
+								<h4 class="list-members__subtitle color--black">Creative Director</h4>
+							</hgroup>
+							<p class="padding-bottom-10">Bram is our awesome Creative Director.</p>
+						</li>
+						<li class="col-sm-4 col-lg-3 module effect">
+							<div class="image-wrapper">
+								
+							</div>
+							<hgroup>
+								<h3 class="h7 serif list-members__title margin-top-10">Ivana Setiawan</h3>
+								<h4 class="list-members__subtitle color--black">Developer / UI Designer</h4>
+							</hgroup>
+							<p class="padding-bottom-10">I am a nerd on acid - passionately in love with frontend shizzle, obsessed with figuring out UI &amp; UX of a layout, Designer at heart and Writer during leisure time.</p>
+						</li>
+						<li class="col-sm-4 col-lg-3 module effect">
+							<div class="image-wrapper">
+								
+							</div>
+							<hgroup>
+								<h3 class="h7 serif list-members__title margin-top-10">Jeroen van Eck</h3>
+								<h4 class="list-members__subtitle color--black">Astronout</h4>
+							</hgroup>
+							<p class="padding-bottom-10">Yep! we have astronout in our team.</p>
+						</li>
+						<li class="col-sm-4 col-lg-3 module effect">
+							<div class="image-wrapper">
+								
+							</div>
+							<hgroup>
+								<h3 class="h7 serif list-members__title margin-top-10">Jordy van Gelder</h3>
+								<h4 class="list-members__subtitle color--black">Developer</h4>
+							</hgroup>
+							<p class="padding-bottom-10">Jordy is our awesome Developer.</p>
+						</li>
+						<li class="col-sm-4 col-lg-3 module effect">
+							<div class="image-wrapper">
+								
+							</div>
+							<hgroup>
+								<h3 class="h7 serif list-members__title margin-top-10">Justin Dijkshoorn</h3>
+								<h4 class="list-members__subtitle color--black">Developer</h4>
+							</hgroup>
+							<p class="padding-bottom-10">Justin is our awesome Developer.</p>
+						</li>
+						<li class="col-sm-4 col-lg-3 module effect">
+							<div class="image-wrapper">
+								
+							</div>
+							<hgroup>
+								<h3 class="h7 serif list-members__title margin-top-10">Michael van Oosten</h3>
+								<h4 class="list-members__subtitle color--black">Developer</h4>
+							</hgroup>
+							<p class="padding-bottom-10">Michael is our awesome Developer.</p>
+						</li>
+						<li class="col-sm-4 col-lg-3 module effect">
+							<div class="image-wrapper">
+								
+							</div>
+							<hgroup>
+								<h3 class="h7 serif list-members__title margin-top-10">Richard de Vos</h3>
+								<h4 class="list-members__subtitle color--black">Designer</h4>
+							</hgroup>
+							<p class="padding-bottom-10">Richard is a Wulf-Designer.</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
 		<section id="start">
 			<div id="intro">
 				<img class="floor" src="img/demo_floor.png">
@@ -249,62 +688,7 @@
 					.setTween(TweenMax.staggerTo($(elements[4]).children("span"), 0.0001, {textDecoration: "underline", textTransform: "uppercase"}, 0.2));
 			</script>
 		</section>
-		<section id="pin">
-			<h3 id="hlpin">pin</h3>
-			<div id="wipe">
-				<h3>wipe</h3>
-			</div>
-			<div id="slide">
-				<h3>slide</h3>
-				<h3>color</h3>
-			</div>
-			<h3 id="unpin">unpin</h3>
-			<script type="text/javascript">
-				// ani
-				var pinani = new TimelineMax()
-					// pin move down
-					.add(TweenMax.from("#pin>h3:first-child", 0.5, {top: "0%", marginTop: 0}))
-					// wipe
-					.add(TweenMax.to("#wipe", 1, {width: "100%"}))
-					// slide
-					.add(TweenMax.to("#slide", 1, {top: "0%", ease: Bounce.easeOut, delay: 0.2}))
-					// color
-					.add([
-						TweenMax.to("#slide h3:first-child", 0.2, {autoAlpha: 0}),
-						TweenMax.from("#slide h3:last-child", 0.2, {autoAlpha: 0})
-					])
-					.add([
-						TweenMax.to("#slide", 0.3, {backgroundColor: "yellow"}),
-						TweenMax.to("#slide h3:last-child", 0.3, {color: "blue"})
-					])
-					.add([
-						TweenMax.to("#slide", 0.3, {backgroundColor: "green"}),
-						TweenMax.to("#slide h3:last-child", 0.3, {color: "red"})
-					])
-					.add([
-						TweenMax.to("#slide", 0.3, {backgroundColor: "red"}),
-						TweenMax.to("#slide h3:last-child", 0.3, {color: "white"})
-					])
-					.add([
-						TweenMax.to("#slide", 0.3, {backgroundColor: "#c7e1ff"}),
-						TweenMax.to("#slide h3:last-child", 0.3, {color: "black"})
-					])
-					// unpin
-					.add(TweenMax.from("#unpin", .5, {top: "100%"}));
-				// pin
-				new ScrollScene({
-						triggerElement: "section#pin",
-						duration: 1100
-					})
-					.on("progress", function () {
-						// keep centered even though width changes
-						$("#wipe h3").width($("#pin>h3").width());
-					})
-					.setTween(pinani)
-					.setPin("section#pin")
-					.addTo(controller);
-			</script>
-		</section>
+
 		<section id="parallax">
 			<div id="parallaxbg">
 				<div class="top"></div>
@@ -419,7 +803,7 @@
 				// bunny
 				TweenMax.set("#hatcontainer #speechbubble", {rotation: -10}); // rotate bubble a bit
 				new ScrollScene({
-					 	triggerElement: "#info #hatcontainer",
+						triggerElement: "#info #hatcontainer",
 						offset: -20
 					})
 					.addTo(controller)
