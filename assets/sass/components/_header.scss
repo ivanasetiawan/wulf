@@ -6,22 +6,27 @@ category: basics
 ---
 ```html_example
 <header class="sticky sticky--header shadow--bottom">
-  <div class="inner">
-    <h1><a href="#" class="logo-mangrove">Mangrove</a></h1>
-  </div>
+	<div class="inner">
+		<h1><a href="#" class="logo-mangrove">Mangrove</a></h1>
+	</div>
 </header>
 ```
 */
 
 .sticky--header {
-  height: 65px;
-  background: #fff;
+	height: 65px;
+	background: #fff;
 }
 
 .logo-mangrove {
-  @include hide-text;
-  width: 147px;
-  height: 26px;
-  display: block;
-  background-image: url(/images/mangrove.png);
+	@include hide-text;
+	width: 147px;
+	height: 26px;
+	display: block;
+	background-image: url(../assets/images/mangrove.png);
+}
+
+.bg-header {
+	background-image: url(../assets/images/bg_header.jpg);
+	background-repeat: repeat;
 }
